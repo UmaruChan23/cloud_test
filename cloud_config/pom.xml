@@ -9,14 +9,17 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.example</groupId>
-	<artifactId>cloud_config</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>cloud-config</artifactId>
+	<version>0.0.1</version>
 	<name>cloud_config</name>
 	<description>cloud_config</description>
+
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2023.0.1</spring-cloud.version>
+		<docker.image.prefix>umaruchan23</docker.image.prefix>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -26,7 +29,10 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-config-server</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bootstrap</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -63,6 +69,30 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>1.4.13</version>
+				<configuration>
+					<repository>${docker.image.prefix}/
+						${project.artifactId}</repository>
+					<tag>${project.version}</tag>
+					<buildArgs>
+						<JAR_FILE>target/${project.build.finalName}
+							.jar</JAR_FILE>
+					</buildArgs>
+				</configuration>
+				<executions>
+					<execution>
+						<id>default</id>
+						<phase>install</phase>
+						<goals>
+							<goal>build</goal>
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

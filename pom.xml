@@ -26,6 +26,7 @@
     <modules>
         <module>rest</module>
         <module>cloud_config</module>
+        <module>service-discovery</module>
     </modules>
 
 </project>
