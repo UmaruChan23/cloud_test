@@ -1,4 +1,4 @@
-GET http://localhost:8081/hello
+GET http://localhost:8072/rest-service/hello
 Accept: application/json
 
 ###
