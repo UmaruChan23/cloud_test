@@ -13,11 +13,12 @@ services:
           - "configserver"
   eurekaserver:
     image: umaruchan23/service-discovery:0.0.1
+    restart: always
     ports:
       - "8070:8070"
     depends_on:
       configserver:
-        condition: service_healthy
+        condition: service_started
     environment:
       SPRING_CLOUD_CONFIG_URI: http://configserver:8071
     networks:
@@ -26,22 +27,26 @@ services:
           - "servicediscovery"
   rest:
     image: umaruchan23/rest:0.0.1
+    restart: always
     environment:
       SPRING_CLOUD_CONFIG_URI: http://configserver:8071
     depends_on:
       configserver:
-        condition: service_healthy
+        condition: service_started
     ports:
       - "8081:8081"
     networks:
       - backend
   gateway:
     image: umaruchan23/gatewayserver:0.0.1
+    restart: always
     environment:
       SPRING_CLOUD_CONFIG_URI: http://configserver:8071
     depends_on:
       configserver:
-        condition: service_healthy
+        condition: service_started
+      eurekaserver:
+        condition: service_started
     ports:
       - "8072:8072"
     networks:
@@ -62,7 +67,7 @@ services:
       networks:
         backend:
           aliases:
-            - "keykloak"
+            - "keycloak"
 networks:
   backend:
     driver: bridge

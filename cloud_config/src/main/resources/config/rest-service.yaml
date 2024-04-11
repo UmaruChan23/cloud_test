@@ -8,11 +8,3 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://servicediscovery:8070/eureka/
-  keycloak:
-    realm: simple-realm
-    auth-server-url: http://keycloak:8080/auth
-    ssl-required: external
-    resource: cloud-test
-    credentials.secret: ${CLIENT_SECRET_KEY}
-    use-resource-role-mappings: true
-    bearer-only: true
