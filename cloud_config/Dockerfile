@@ -4,7 +4,7 @@ LABEL maintainer="Matorin Fedor <f.matorin@mail.ru>"
 
 ARG JAR_FILE
 
-COPY ${JAR_FILE} app.jar
+COPY /target/cloud-config-0.0.1.jar app.jar
 
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf /app.jar)
 

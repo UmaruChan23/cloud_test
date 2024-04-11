@@ -27,6 +27,7 @@
         <module>rest</module>
         <module>cloud_config</module>
         <module>service-discovery</module>
+        <module>API Gateway server</module>
     </modules>
 
 </project>

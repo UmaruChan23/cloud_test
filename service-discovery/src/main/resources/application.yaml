@@ -1,1 +1,3 @@
-spring.application.name=service-discovery
+spring:
+  application:
+    name: service-discovery

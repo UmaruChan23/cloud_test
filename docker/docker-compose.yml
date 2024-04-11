@@ -41,7 +41,7 @@ services:
   rest:
     image: umaruchan23/rest:0.0.1
     environment:
-      CONFIGSERVER_URI: "http://configserver:8071"
+      SPRING_CLOUD_CONFIG_URI: http://configserver:8071
       CONFIGSERVER_PORT:   "8071"
       DATABASESERVER_PORT: "5432"
     depends_on:
