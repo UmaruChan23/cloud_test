@@ -1,0 +1,98 @@
+{
+	"info": {
+		"_postman_id": "6b827329-9400-4d22-a4af-7e9a4a563123",
+		"name": "SSO Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13859013"
+	},
+	"item": [
+		{
+			"name": "GetHelloWorld",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJFRURMem8xald2cmNaRG5KLTY1R1lMejV4cE1JdVduOU5PZndNdHNVS004In0.eyJleHAiOjE3MTMxMDI3NDAsImlhdCI6MTcxMzEwMjQ0MCwianRpIjoiZTZkMGJmOWEtMjFhYS00N2U1LTgzYmQtN2E1OTRlZjQ5ZmUyIiwiaXNzIjoiaHR0cDovL2tleWNsb2FrOjgwODAvcmVhbG1zL3NpbXBsZS1yZWFsbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIwZDYyNTkxYS02MDI2LTQ3Y2MtOWI2Zi1kNjFkMTdmMjM1ZGIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJjbG91ZC10ZXN0Iiwic2Vzc2lvbl9zdGF0ZSI6ImRmOWFiMGQzLTQzYjQtNGFmZi1iNTZlLWNhNDE5MTY1OTQ1OSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiZGVmYXVsdC1yb2xlcy1zaW1wbGUtcmVhbG0iLCJjbG91ZC11c2VyIiwiY2xvdWQtYWRtaW4iLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwic2lkIjoiZGY5YWIwZDMtNDNiNC00YWZmLWI1NmUtY2E0MTkxNjU5NDU5IiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInVzZXJfaWQiOiIwZDYyNTkxYS02MDI2LTQ3Y2MtOWI2Zi1kNjFkMTdmMjM1ZGIiLCJuYW1lIjoiRmVkb3IgTWF0b3JpbiIsInByZWZlcnJlZF91c2VybmFtZSI6ImZlZG9yIiwiZ2l2ZW5fbmFtZSI6IkZlZG9yIiwiZmFtaWx5X25hbWUiOiJNYXRvcmluIiwiZW1haWwiOiJmLm1hdG9yaW5AbWFpbC5ydSJ9.cOxcslE-Moz6loO8moRo3T4V8MMTWOpPnG20vtK9q0Ue-rMaIt_evgDe--uyxKH09sOb06Qd74A2UJ8BYSQXV7LvNVyzaaTqZ3jACLhPe-XdYhLqyhpvmrB_PtKVY_O8qcfJZD8pyK3txvzGngY00uS-r2CC331ea8ar44Qog9vB4UEitKjOz7a5eLEKUoXwu8qmoxmpFocXGTvcj_gZzF8u1rNeMkvxnH8a8c2y-vVCHibE_QJbtnoXpjaFsKMgnWSRuPMNUtevuPExz09wQEmp-Cc25c73F-va7htrnfZW4Qwy2IQXyMOgQh-8kyHEE8b__CLMvA13DIIFm1pl6w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8072/rest-service/hello",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8072",
+					"path": [
+						"rest-service",
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetToken",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "uGib4suBtKNKbWj3ptmQlgD1dOSC8PSv",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "cloud-test",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "fedor",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "pass",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://keycloak:8080/realms/simple-realm/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"keycloak"
+					],
+					"port": "8080",
+					"path": [
+						"realms",
+						"simple-realm",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
