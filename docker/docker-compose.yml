@@ -54,7 +54,7 @@ services:
     networks:
       - backend
   keycloak:
-      image: quay.io/keycloak/keycloak
+      image: umaruchan23/keycloak:0.0.1
       restart: always
       ports:
         - "8080:8080"
