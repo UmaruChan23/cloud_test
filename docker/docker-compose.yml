@@ -2,6 +2,7 @@ version: '2.1'
 services:
   configserver:
     image: umaruchan23/cloud-config:0.0.1
+    restart: always
     ports:
       - "8071:8071"
     environment:
@@ -30,6 +31,7 @@ services:
     restart: always
     environment:
       SPRING_CLOUD_CONFIG_URI: http://configserver:8071
+      CLIENT_KEY: ${CLIENT_KEY}
     depends_on:
       configserver:
         condition: service_started
@@ -68,6 +70,15 @@ services:
         backend:
           aliases:
             - "keycloak"
+  feign-rest:
+    image: umaruchan23/feign-rest:0.0.1
+    restart: always
+    environment:
+      CLIENT_KEY: ${CLIENT_KEY}
+    ports:
+      - "8087:8087"
+    networks:
+      - backend
 networks:
   backend:
     driver: bridge
