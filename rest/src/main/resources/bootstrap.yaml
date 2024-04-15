@@ -4,10 +4,6 @@ spring:
   cloud:
     config:
       uri: http://configserver:8071
-    openfeign:
-      oauth2:
-        enabled: true
-        clientRegistrationId: keycloak
   security:
     oauth2:
       client:

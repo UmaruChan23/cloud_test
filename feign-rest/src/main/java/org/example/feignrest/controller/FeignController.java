@@ -17,7 +17,7 @@ public class FeignController {
     private static final Logger log = LoggerFactory.getLogger(FeignController.class);
 
     @GetMapping("/audit")
-    //@PreAuthorize("hasRole('cloud-admin')")
+    @PreAuthorize("hasRole('cloud-admin')")
     public ResponseEntity<String> getHello(@AuthenticationPrincipal Jwt principal,
                                            @RequestHeader("Authorization") String authorization) {
         System.out.println(authorization);
