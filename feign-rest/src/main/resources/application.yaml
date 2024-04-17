@@ -7,18 +7,18 @@ spring:
         registration:
           keycloak:
             client-id: cloud-test
-            client-secret: ${CLIENT_KEY}
+            client-secret: uGib4suBtKNKbWj3ptmQlgD1dOSC8PSv
             authorization-grant-type: client_credentials
             provider: keycloak
             scope:
               - openid
         provider:
           keycloak:
-            issuer-uri: http://keycloak:8080/realms/simple-realm
-            token-uri: http://keycloak:8080/realms/simple-realm/protocol/openid-connect/token
+            issuer-uri: http://localhost:8080/realms/simple-realm
+            token-uri: http://localhost:8080/realms/simple-realm/protocol/openid-connect/token
       resourceserver:
         jwt:
-          issuer-uri: http://keycloak:8080/realms/simple-realm
+          issuer-uri: http://localhost:8080/realms/simple-realm
 
 eureka:
   instance:
@@ -27,7 +27,7 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://servicediscovery:8070/eureka/
+      defaultZone: http://localhost:8070/eureka/
 
 server:
   port: 8087

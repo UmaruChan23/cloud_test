@@ -52,7 +52,7 @@ public class SecurityConfig {
     public SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> auth
                 .anyRequest()
-                .authenticated());
+                .permitAll());
         http.oauth2ResourceServer(oauth2Configurer ->
                 oauth2Configurer.jwt(
                         jwtConfigurer -> jwtConfigurer.jwtAuthenticationConverter(jwt -> {

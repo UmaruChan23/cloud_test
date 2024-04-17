@@ -1,0 +1,6 @@
+springdoc:
+  enable-native-support: true
+  api-docs:
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
