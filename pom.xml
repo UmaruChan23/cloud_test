@@ -25,7 +25,6 @@
 
     <modules>
         <module>rest</module>
-        <module>cloud_config</module>
         <module>service-discovery</module>
         <module>API Gateway server</module>
         <module>feign-rest</module>

@@ -51,8 +51,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> auth
+                .requestMatchers("/v3/api-docs")
+                .permitAll()
                 .anyRequest()
-                .permitAll());
+                .authenticated());
         http.oauth2ResourceServer(oauth2Configurer ->
                 oauth2Configurer.jwt(
                         jwtConfigurer -> jwtConfigurer.jwtAuthenticationConverter(jwt -> {

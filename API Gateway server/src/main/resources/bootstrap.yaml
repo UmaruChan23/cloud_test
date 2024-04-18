@@ -1,11 +1,34 @@
 spring:
+  output:
+    ansi:
+      enabled: always
   application:
     name: gateway-server
   cloud:
     gateway:
-      discovery.locator:
-        enabled: true
-        lowerCaseServiceId: true
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+      routes:
+        - id: rest-service
+          uri: lb://rest-service
+          predicates:
+            - Path=/rest-service/**
+          filters:
+            - RewritePath=/rest-service/(?<path>.*), /$\{path}
+        - id: feign-service
+          uri: lb://feign-service
+          predicates:
+            - Path=/feign-service/**
+          filters:
+            - RewritePath=/feign-service/(?<path>.*), /$\{path}
+        - id: openapi
+          uri: http://localhost:${server.port}
+          predicates:
+            - Path=/v3/api-docs/**
+          filters:
+            - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
 server:
   port: 8072
 eureka:
@@ -16,3 +39,16 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://localhost:8070/eureka/
+
+springdoc:
+  swagger-ui:
+    urls:
+      - name: rest-service
+        url: /v3/api-docs/rest-service
+      - name: feign-service
+        url: /v3/api-docs/feign-service
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0

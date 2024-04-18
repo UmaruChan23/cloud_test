@@ -1,4 +1,7 @@
 spring:
+  output:
+    ansi:
+      enabled: always
   application:
     name: rest-service
   security:
@@ -29,3 +32,8 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://localhost:8070/eureka/
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
